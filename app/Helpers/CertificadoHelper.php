@@ -1,0 +1,208 @@
+<?php
+
+namespace App\Helpers;
+
+use Carbon\Carbon;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
+
+class CertificadoHelper
+{
+    /**
+     * Garantiza que la carpeta de caché de fuentes de DomPDF exista en storage/fonts.
+     */
+    public static function ensureFontCacheDirExists(): void
+    {
+        $fontDir = storage_path('fonts');
+        if (!File::exists($fontDir)) {
+            File::makeDirectory($fontDir, 0755, true);
+        }
+    }
+
+    /**
+     * Formatea una fecha a texto legible
+     * Ejemplo: 18 de agosto de 2026
+     */
+    public static function fechaEnLetras(?string $fecha): string
+    {
+        if (!$fecha) {
+            return '';
+        }
+
+        return Carbon::parse($fecha)->locale('es')->isoFormat('D [de] MMMM [del] YYYY');
+    }
+
+    /**
+     * Formatea un rango de fechas para el evento.
+     * Ejemplo mismo año: Realizado del 01 de Octubre al 31 de Octubre del 2025
+     * Ejemplo distinto año: Realizado del 15 de Diciembre del 2024 al 15 de Enero del 2025
+     */
+    public static function formatearRangoFechas(?string $fechaInicio, ?string $fechaFinal): string
+    {
+        if (!$fechaInicio && !$fechaFinal) {
+            return '';
+        }
+
+        if (!$fechaInicio) {
+            return "Realizado el " . self::fechaEnLetras($fechaFinal);
+        }
+
+        if (!$fechaFinal) {
+            return "Realizado el " . self::fechaEnLetras($fechaInicio);
+        }
+
+        $inicio = Carbon::parse($fechaInicio)->locale('es');
+        $final = Carbon::parse($fechaFinal)->locale('es');
+
+        $diaInicio = str_pad($inicio->day, 2, '0', STR_PAD_LEFT);
+        $diaFinal  = str_pad($final->day, 2, '0', STR_PAD_LEFT);
+
+        $mesInicio = ucfirst($inicio->translatedFormat('F'));
+        $mesFinal  = ucfirst($final->translatedFormat('F'));
+
+        $anioInicio = $inicio->year;
+        $anioFinal  = $final->year;
+
+        // Caso 1: Mismo Año
+        if ($anioInicio === $anioFinal) {
+            // Mismo mes
+            if ($inicio->month === $final->month) {
+                return "Realizado del {$diaInicio} de {$mesInicio} al {$diaFinal} de {$mesFinal} del {$anioFinal}";
+            }
+
+            // Distinto mes
+            return "Realizado del {$diaInicio} de {$mesInicio} al {$diaFinal} de {$mesFinal} del {$anioFinal}";
+        }
+
+        // Caso 2: Años distintos
+        return "Realizado del {$diaInicio} de {$mesInicio} del {$anioInicio} al {$diaFinal} de {$mesFinal} del {$anioFinal}";
+    }
+
+    /**
+     * Convierte una fuente TTF/OTF local a base64 para inscrustarla en el CSS del PDF.
+     */
+    public static function getFontBase64(string $fontName): ?string
+    {
+        self::ensureFontCacheDirExists();
+
+        $fullPath = public_path("fonts/{$fontName}");
+
+        if (!File::exists($fullPath)) {
+            return null;
+        }
+
+        $fontData = File::get($fullPath);
+
+        return 'data:font/truetype;base64,' . base64_encode($fontData);
+    }
+
+    /**
+     * Resuelve el nombre de la vista Blade según la clave o diseño de la plantilla
+     */
+    public static function resolveTemplateView(?string $disenio): string
+    {
+        $disenio = $disenio ?? 'default';
+        $view = "pdf.certificados.{$disenio}";
+
+        return view()->exists($view) ? $view : 'pdf.certificado';
+    }
+
+    public static function resolveTemplateDefault(string $tipoPrograma): string
+    {
+        $view = "pdfs.{$tipoPrograma}.default";
+
+        return $view;
+    }
+
+    /**
+     * Calcula dinámicamente el font-size y line-height evaluando el ancho real proyectado en pt/px.
+     * 
+     * @param string $texto Texto a evaluar
+     * @param float $fontSizeBase Tamaño de fuente base deseado
+     * @param float $anchoMaximoDisponible Ancho disponible de la capa/caja en el PDF (por defecto 673.51 pt = 80% de A4 landscape)
+     * @param float $lineHeight Separador de líneas
+     * @param float $factorFuente Factor de aspecto promedio de la fuente (GreatVibes/Calibri es aprox 0.38)
+     * @return array ['font_size' => int|float, 'line_height' => float]
+     */
+    public static function calcularEstilosTexto(
+        string $texto,
+        float $fontSizeBase,
+        float $anchoMaximoDisponible = 673.60,
+        float $lineHeight = 1.0,
+        float $factorConversion = 0.35,
+        float $factorFuente = 0.38
+    ): array {
+        $textoLimpio = trim($texto);
+
+        if ($textoLimpio === '') {
+            return [
+                'font_size' => (int) round($fontSizeBase),
+                'line_height' => $lineHeight
+            ];
+        }
+
+        // Ponderación de caracteres según su ancho visual
+        $anchoCaracteres = 0;
+        $longitud = mb_strlen($textoLimpio);
+
+        for ($i = 0; $i < $longitud; $i++) {
+            $char = mb_substr($textoLimpio, $i, 1);
+
+            if (preg_match('/[A-ZÑÁÉÍÓÚ]/u', $char)) {
+                $anchoCaracteres += 1.25; // Mayúsculas
+            } elseif (preg_match('/[mwW]/u', $char)) {
+                $anchoCaracteres += 1.35; // Letras muy anchas
+            } elseif (preg_match('/[iI1.,;\s]/u', $char)) {
+                $anchoCaracteres += 0.45; // Caracteres muy angostos o espacios
+            } elseif (preg_match('/[lftr]/u', $char)) {
+                $anchoCaracteres += 0.65; // Letras angostas
+            } else {
+                $anchoCaracteres += 1.0;  // Minúsculas estándar (a, e, o, c, u, etc.)
+            }
+        }
+
+        // Ancho total proyectado en la misma unidad que el PDF (pt/px)
+        $anchoProyectado = $anchoCaracteres * $fontSizeBase * $factorFuente;
+
+        Log::info("Evaluando tamaño para texto: '{$textoLimpio}'", [
+            'longitudTexto'         => $longitud,
+            'anchoCaracteres'       => $anchoCaracteres,
+            'fontSizeBase'          => $fontSizeBase,
+            'anchoProyectado'       => $anchoProyectado,
+            'anchoMaximoDisponible' => $anchoMaximoDisponible,
+            'lineHeight'            => $lineHeight
+        ]);
+
+        // CASO 1: El texto entra en 1 sola línea cómodamente sin reducir la fuente base
+        if ($anchoProyectado <= $anchoMaximoDisponible) {
+            $newFontSize = (int) round($fontSizeBase);
+            Log::info("Resultado: Entra en 1 sola línea (Caso 1)", ['fontSize' => $newFontSize]);
+
+            return [
+                'font_size'   => $newFontSize,
+                'line_height' => $lineHeight
+            ];
+        }
+
+        // Si sobrepasa el ancho máximo, calculamos la escala exacta necesaria
+        $ratio = $anchoMaximoDisponible / $anchoProyectado;
+
+        // Aplicamos el ratio para reducir solo el porcentaje necesario
+        $fontSizeCalculado = $fontSizeBase * $ratio;
+
+        // Definimos un tamaño mínimo de seguridad (35% del base)
+        $minFontSize = $fontSizeBase * $factorConversion;
+        $newFontSize = (int) round(max($fontSizeCalculado, $minFontSize));
+
+        Log::info("Resultado: Ajuste dinámico proporcional a 1 línea", [
+            'ratio' => $ratio,
+            'fontSizeOriginal' => $fontSizeBase,
+            'fontSizeAjustado' => $newFontSize
+        ]);
+
+        return [
+            'font_size'   => $newFontSize,
+            'line_height' => $lineHeight
+        ];
+    }
+}

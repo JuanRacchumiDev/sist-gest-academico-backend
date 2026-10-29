@@ -1,0 +1,55 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('academic.detalle_parametro', function (Blueprint $table) {
+            $table->id('codigo');
+            $table->unsignedBigInteger('parametro_clase');
+
+            $table->string('nombre', 100);
+            $table->string('nombre_url', 120);
+            $table->string('descripcion', 150)->nullable();
+            $table->string('valor', 20)->nullable();
+            $table->string('abreviatura', 10)->nullable();
+            $table->integer('longitud')->nullable();
+            $table->boolean('en_persona')->default(false);
+            $table->boolean('en_empresa')->default(false);
+            $table->boolean('compra')->default(false);
+            $table->boolean('venta')->default(false);
+            $table->boolean('visible')->default(false);
+
+            $table->string('fecha_crea', 10)->nullable();
+            $table->string('fecha_actualiza', 10)->nullable();
+            $table->string('fecha_elimina', 10)->nullable();
+
+            $table->string('user_crea', 12)->nullable();
+            $table->string('user_actualiza', 12)->nullable();
+            $table->string('user_elimina', 12)->nullable();
+
+            $table->boolean('estado')->default(true);
+            $table->timestamps();
+
+            $table->foreign('parametro_clase')
+                ->references('clase')
+                ->on('academic.parametro')
+                ->onDelete('cascade');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('academic.detalle_parametro');
+    }
+};

@@ -1,0 +1,54 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('academic.users', function (Blueprint $table) {
+            $table->id();
+
+            $table->string('name', 10);
+            $table->string('email', 60)->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->string('user_crea', 12)->nullable();
+            $table->string('user_actualiza', 12)->nullable();
+            $table->string('user_elimina', 12)->nullable();
+            $table->boolean('estado')->default(true);
+            $table->timestamps();
+        });
+
+        Schema::create('academic.password_reset_tokens', function (Blueprint $table) {
+            $table->string('email', 60)->primary();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
+        });
+
+        Schema::create('academic.sessions', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->foreignId('user_id')->nullable()->index();
+            $table->string('ip_address', 45)->nullable();
+            $table->text('user_agent')->nullable();
+            $table->longText('payload');
+            $table->integer('last_activity')->index();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('academic.users');
+        Schema::dropIfExists('academic.password_reset_tokens');
+        Schema::dropIfExists('academic.sessions');
+    }
+};

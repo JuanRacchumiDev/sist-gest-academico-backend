@@ -1,0 +1,164 @@
+<?php
+
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\DetalleParametroController;
+use App\Http\Controllers\Api\MatriculaController;
+use App\Http\Controllers\Api\ModuloController;
+use App\Http\Controllers\Api\PagoController;
+use App\Http\Controllers\Api\ParametroController;
+use App\Http\Controllers\Api\PdfController;
+use App\Http\Controllers\Api\PersonaController;
+use App\Http\Controllers\Api\PlantillaController;
+use App\Http\Controllers\Api\ProgramaController;
+use App\Http\Controllers\Api\CertificadoController;
+use App\Http\Controllers\Api\AdjuntoController;
+use App\Http\Controllers\Api\InstitucionController;
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\CuestionarioController;
+use Illuminate\Support\Facades\Route;
+
+Route::prefix('v1')->group(function () {
+    Route::get('test', function () {
+        return response()->json([
+            'success' => true,
+            'message' => 'Acceso correcto al enrutador de la API'
+        ]);
+    });
+
+    Route::prefix('personas')->group(function () {
+        Route::get('consultar-documento/{tipoDocumento}/{numeroDocumento}', [PersonaController::class, 'consultarDocumento'])->name('personas.consultarDocumento');
+    });
+
+    // Rutas públicas de validación y descarga de certificados (sin autenticación)
+    Route::prefix('certificados')->group(function () {
+        Route::get('validar/{codigoQR}', [CertificadoController::class, 'verificar'])->name('certificados.validar');
+        Route::get('descargar/{codigo}', [CertificadoController::class, 'downloadByCodigo'])->name('certificados.downloadPDF.public');
+    });
+
+    Route::prefix('auth')->group(function () {
+        Route::post('login', [AuthController::class, 'validateUnique'])->name('login');
+    });
+
+    Route::middleware('auth:api')->group(function () {
+        Route::prefix('auth')->group(function () {
+            Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+            Route::post('refresh', [AuthController::class, 'refresh'])->name('refresh');
+            Route::get('authenticated', [AuthController::class, 'authenticated'])->name('authenticated');
+        });
+
+        Route::apiResource('parametros', ParametroController::class);
+
+        Route::prefix('catalogos')->group(function () {
+            Route::get('/clase/{clase}', [DetalleParametroController::class, 'index'])->name('catalogos.porclase');
+            Route::get('/', [DetalleParametroController::class, 'getFiltered'])->name('catalogos');
+            Route::get('/paginate', [DetalleParametroController::class, 'getFilteredPaginate'])->name('catalogos.paginate');
+            Route::get('/show', [DetalleParametroController::class, 'showByParams'])->name('catalogos.show');
+            Route::post('/{clase}', [DetalleParametroController::class, 'store'])->name('catalogos.store');
+            Route::patch('/{clase}/{nParDetCodigo}', [DetalleParametroController::class, 'update'])->name('catalogos.update');
+        });
+
+        Route::prefix('personas')->group(function () {
+            Route::get('/', [PersonaController::class, 'index'])->name('personas.index');
+            Route::get('/grupo/{grupo}/paginate', [PersonaController::class, 'getFilteredPaginate'])->name('personas.paginate');
+            Route::get('/grupo/{grupo}', [PersonaController::class, 'getFiltered'])->name('personas');
+            Route::get('/{id}', [PersonaController::class, 'show'])->name('personas.show');
+            Route::post('/store-api', [PersonaController::class, 'storeApi'])->name('personas.storeApi');
+            Route::post('/', [PersonaController::class, 'store'])->name('personas.store');
+            Route::patch('/{id}', [PersonaController::class, 'update'])->name('personas.update');
+            Route::delete('/{id}', [PersonaController::class, 'destroy'])->name('personas.destroy');
+        });
+
+        Route::prefix('plantillas')->group(function () {
+            Route::get('/paginate', [PlantillaController::class, 'getFilteredPaginate'])->name('plantillas.paginate');
+            Route::get('/{id}', [PlantillaController::class, 'show'])->name('plantillas.show');
+            Route::get('/', [PlantillaController::class, 'index'])->name('plantillas');
+        });
+
+        Route::prefix('programas')->group(function () {
+            Route::get('/', [ProgramaController::class, 'index'])->name('programas');
+            Route::post('/{id}/actualizar-modulos', [ProgramaController::class, 'updateModulos'])->name('programas.actualizar-modulos');
+            Route::get('/paginate', [ProgramaController::class, 'getFilteredPaginate'])->name('programas.paginate');
+            Route::get('{programaId}/modulos/{moduloId}/descargar-plan', [ProgramaController::class, 'downloadPlanModulo'])->name('programas.modulos.descargar-plan');
+            Route::get('/{id}', [ProgramaController::class, 'show'])->name('programas.show');
+            Route::post('/', [ProgramaController::class, 'store'])->name('programas.store');
+            Route::patch('/{id}', [ProgramaController::class, 'update'])->name('programas.update');
+        });
+
+        Route::prefix('modulos')->group(function () {
+            Route::get('/paginate', [ModuloController::class, 'getFilteredPaginate'])->name('modulos.paginate');
+            Route::get('/{id}', [ModuloController::class, 'show'])->name('modulos.show');
+            Route::get('/', [ModuloController::class, 'index'])->name('modulos');
+            Route::post('/', [ModuloController::class, 'store'])->name('modulos.store');
+            Route::patch('/{id}', [ModuloController::class, 'update'])->name('modulos.update');
+        });
+
+        Route::prefix('matriculas')->group(function () {
+            Route::get('{id}/modulos-por-pagar', [MatriculaController::class, 'getModulosPorPagar'])->name('matriculas.modulosporpagar');
+            Route::get('{id}/modulos-pagados', [MatriculaController::class, 'getModulosPagados'])->name('matriculas.modulospagados');
+            Route::get('/cronograma-pagos', [MatriculaController::class, 'downloadCronograma'])->name('matriculas.cronogramapagos');
+            Route::get('/paginate', [MatriculaController::class, 'getFilteredPaginate'])->name('matriculas.paginate');
+            Route::get('/{id}', [MatriculaController::class, 'show'])->name('matriculas.show');
+            Route::get('/', [MatriculaController::class, 'index'])->name('matriculas');
+            Route::post('/', [MatriculaController::class, 'store'])->name('matriculas.store');
+            Route::patch('/{id}', [MatriculaController::class, 'update'])->name('matriculas.update');
+            Route::delete('/{id}/pdf', [MatriculaController::class, 'regenerateFicha'])->name('matriculas.delete');
+        });
+
+        Route::prefix('instituciones')->group(function () {
+            Route::get('/paginate', [InstitucionController::class, 'getFilteredPaginate'])->name('instituciones.paginate');
+            Route::get('/{id}', [InstitucionController::class, 'show'])->name('instituciones.show');
+            Route::get('/', [InstitucionController::class, 'getFiltered'])->name('instituciones');
+            Route::post('/', [InstitucionController::class, 'store'])->name('instituciones.store');
+            Route::patch('/{id}', [InstitucionController::class, 'update'])->name('instituciones.update');
+        });
+
+        Route::prefix('pagos')->group(function () {
+            Route::get('/paginate', [PagoController::class, 'getFilteredPaginate'])->name('pagos.paginate');
+            Route::get('/matricula', [PagoController::class, 'getMatricula'])->name('pagos.matricula');
+            Route::get('/modulo', [PagoController::class, 'getPagoModulo'])->name('pagos.modulo');
+            Route::get('/constancia', [PagoController::class, 'downloadConstancia'])->name('pagos.constancia');
+            Route::get('{id}', [PagoController::class, 'show'])->name('pagos.show');
+            Route::get('/', [PagoController::class, 'index'])->name('pagos');
+            Route::post('/', [PagoController::class, 'store'])->name('pagos.store');
+        });
+
+        Route::prefix('certificados')->group(function () {
+            Route::get('/paginate', [CertificadoController::class, 'getFilteredPaginate'])->name('certificados.paginate');
+            Route::get('/', [CertificadoController::class, 'index'])->name('certificados');
+            Route::get('/{id}/download', [CertificadoController::class, 'download'])->name('certificados.download');
+            Route::get('/{id}/preview', [CertificadoController::class, 'downloadPDF'])->name('certificados.preview');
+            Route::get('/{id}', [CertificadoController::class, 'show'])->name('certificados.show');
+            Route::post('/', [CertificadoController::class, 'store'])->name('certificados.store');
+            Route::post('/modular', [CertificadoController::class, 'storeModular'])->name('certificados.storemodular');
+            Route::delete('/{id}', [CertificadoController::class, 'destroy'])->name('certificados.destroy');
+        });
+
+        Route::prefix('adjuntos')->group(function () {
+            Route::get('/paginate', [AdjuntoController::class, 'getFilteredPaginate'])->name('adjuntos.paginate');
+            Route::get('/', [AdjuntoController::class, 'index'])->name('adjuntos');
+            Route::post('/verificar', [AdjuntoController::class, 'verificarExistencia'])->name('adjuntos.verificar');
+            Route::get('/{id}/download', [AdjuntoController::class, 'download'])->name('adjuntos.download');
+            Route::get('/{id}', [AdjuntoController::class, 'show'])->name('adjuntos.show');
+            Route::post('/', [AdjuntoController::class, 'store'])->name('adjuntos.store');
+            Route::patch('/{id}', [AdjuntoController::class, 'update'])->name('adjuntos.update');
+            Route::delete('/{id}', [AdjuntoController::class, 'destroy'])->name('adjuntos.destroy');
+        });
+
+        Route::prefix('cuestionarios')->group(function () {
+            Route::get('/paginate', [CuestionarioController::class, 'getFilteredPaginate'])->name('cuestionarios.paginate');
+            Route::get('/{id}', [CuestionarioController::class, 'show'])->name('cuestionarios.show');
+            Route::get('/', [CuestionarioController::class, 'index'])->name('cuestionarios');
+            Route::post('/', [CuestionarioController::class, 'store'])->name('cuestionarios.store');
+            Route::patch('/{id}', [CuestionarioController::class, 'update'])->name('cuestionarios.update');
+        });
+
+        Route::prefix('usuarios')->group(function () {
+            Route::get('/paginate', [UserController::class, 'getFilteredPaginate'])->name('users.paginate');
+            Route::get('/', [UserController::class, 'index'])->name('users.index');
+            Route::get('/{id}', [UserController::class, 'show'])->name('users.show');
+            Route::get('/validate', [UserController::class, 'validate'])->name('users.validate');
+            Route::post('/', [UserController::class, 'store'])->name('users.store');
+            Route::patch('/{id}', [UserController::class, 'update'])->name('users.update');
+        });
+    });
+});

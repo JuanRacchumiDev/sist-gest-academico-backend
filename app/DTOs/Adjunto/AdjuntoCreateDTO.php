@@ -1,0 +1,203 @@
+<?php
+
+namespace App\DTOs\Adjunto;
+
+use Spatie\LaravelData\Data;
+use Illuminate\Validation\Rule;
+
+class AdjuntoCreateDTO extends Data
+{
+    public function __construct(
+        public string $titulo,
+        public string $tipo,
+
+        public ?int $id_programa = null,
+        public ?int $id_modulo = null,
+        public ?int $id_sucursal = null,
+        public ?string $titulo_url = null,
+        public ?string $descripcion = null,
+        public ?string $url = null,
+        public ?string $filename = null,
+        public ?string $originalname = null,
+        public ?string $filepath = null,
+        public ?string $mimetype = null,
+        public ?int $size = null,
+
+        public ?string $disk = null,
+        public ?string $bucket = null,
+        public ?string $region = null,
+
+        public ?string $fecha_crea = null,
+        public ?string $fecha_actualiza = null,
+        public ?string $fecha_elimina = null,
+
+        public ?string $user_crea = null,
+        public ?string $user_actualiza = null,
+        public ?string $user_elimina = null,
+
+        public ?bool $is_descargable = null,
+        public ?bool $is_visible = null,
+        public ?bool $estado = null,
+    ) {}
+
+    public static function withDefaults(): array
+    {
+        return [
+            'is_descargable' => true,
+            'is_visible' => true,
+            'estado' => true,
+            'disk' => config('filesystems.default', 'local')
+        ];
+    }
+
+    public static function rules(): array
+    {
+        return [
+            'id_programa' => [
+                'sometimes',
+                'integer',
+                Rule::exists('programa', 'id'),
+                'nullable'
+            ],
+            'id_modulo' => [
+                'sometimes',
+                'integer',
+                Rule::exists('modulo', 'id'),
+                'nullable'
+            ],
+            'id_sucursal' => [
+                'sometimes',
+                'integer',
+                Rule::exists('detalle_parametro', 'id'),
+                'nullable'
+            ],
+            'tipo' => [
+                'required',
+                'in:FILE,YOUTUBE,DRIVE,URL'
+            ],
+            'titulo' => [
+                'required',
+                'string',
+                'max:100'
+            ],
+            'titulo_url' => [
+                'sometimes',
+                'string',
+                'max:120',
+                'nullable'
+            ],
+            'descripcion' => [
+                'sometimes',
+                'string',
+                'max:150',
+                'nullable'
+            ],
+            'url' => [
+                'required_if:tipo,YOUTUBE,DRIVE,URL',
+                'url',
+                'nullable'
+            ],
+            'file' => [
+                'required_if:tipo,FILE',
+                'nullable',
+                'file',
+                'max:10240'
+            ],
+            'disk' => [
+                'sometimes',
+                'string',
+                'max:50',
+                'nullable'
+            ],
+            'bucket' => [
+                'sometimes',
+                'string',
+                'max:100',
+                'nullable'
+            ],
+            'region' => [
+                'sometimes',
+                'string',
+                'max:50',
+                'nullable'
+            ],
+            'filename' => [
+                'sometimes',
+                'string',
+                'max:120',
+                'nullable'
+            ],
+            'originalname' => [
+                'sometimes',
+                'string',
+                'max:180',
+                'nullable'
+            ],
+            'filepath' => [
+                'sometimes',
+                'string',
+                'max:150',
+                'nullable'
+            ],
+            'mimetype' => [
+                'sometimes',
+                'string',
+                'max:40',
+                'nullable'
+            ],
+            'size' => [
+                'sometimes',
+                'integer',
+                'nullable'
+            ],
+            'is_descargable' => [
+                'sometimes',
+                'boolean',
+                'nullable'
+            ],
+            'is_visible' => [
+                'sometimes',
+                'boolean',
+                'nullable'
+            ],
+            'fecha_crea' => [
+                'sometimes',
+                'string',
+                'nullable'
+            ],
+            'fecha_actualiza' => [
+                'sometimes',
+                'string',
+                'nullable'
+            ],
+            'fecha_elimina' => [
+                'sometimes',
+                'string',
+                'nullable'
+            ],
+            'user_crea' => [
+                'sometimes',
+                'string',
+                'max:12',
+                'nullable'
+            ],
+            'user_actualiza' => [
+                'sometimes',
+                'string',
+                'max:12',
+                'nullable'
+            ],
+            'user_elimina' => [
+                'sometimes',
+                'string',
+                'max:12',
+                'nullable'
+            ],
+            'estado' => [
+                'sometimes',
+                'boolean',
+                'nullable'
+            ]
+        ];
+    }
+}
