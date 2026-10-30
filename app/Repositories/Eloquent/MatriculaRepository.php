@@ -67,7 +67,7 @@ class MatriculaRepository implements IMatriculaRepository
             ->join('academic.detalle_matricula as dm', 'dm.id_matricula', '=', 'm.id')
             ->join('academic.programa as p', 'p.id', '=', 'dm.id_programa')
             ->join('academic.persona as p2', 'p2.id', '=', 'm.id_persona')
-            ->join('academic.detalle_parametro as dp', 'dp.codigo', '=', 'p.codigo_tipoprograma')
+            ->join('academic.detalle_parametro as dp', 'dp.codigo', '=', 'p.codigo_tipo_programa')
             ->select([
                 'dm.id_matricula',
                 'p2.nombre_completo as nombre_alumno',

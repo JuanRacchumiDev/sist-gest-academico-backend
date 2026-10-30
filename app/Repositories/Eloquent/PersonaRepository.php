@@ -139,7 +139,7 @@ class PersonaRepository implements IPersonaRepository
     public function updateOrCreateFromAPI(PersonaAPIDTO $dto): Persona
     {
         $persona = Persona::firstOrNew([
-            'codigo_tipodocumento' => $dto->codigo_tipodocumento,
+            'codigo_tipo_documento' => $dto->codigo_tipo_documento,
             'numero_documento' => $dto->numero_documento
         ]);
 
@@ -173,8 +173,8 @@ class PersonaRepository implements IPersonaRepository
 
     private function applyFilters(Builder $query, array $filters): Builder
     {
-        if (!empty($filters['codigo_tipodocumento'])) {
-            $query->where('codigo_tipodocumento', $filters['codigo_tipodocumento']);
+        if (!empty($filters['codigo_tipo_documento'])) {
+            $query->where('codigo_tipo_documento', $filters['codigo_tipo_documento']);
         }
 
         if (!empty($filters['numero_documento'])) {

@@ -13,8 +13,8 @@ class Programa extends Model
 
     protected $fillable = [
         'codigo_segmento',
-        'codigo_tipoprograma',
-        'codigo_categoriaprograma',
+        'codigo_tipo_programa',
+        'codigo_categoria_programa',
         'id_sucursal',
 
         'codigo_old',
@@ -79,7 +79,7 @@ class Programa extends Model
      */
     public function tipoPrograma(): BelongsTo
     {
-        return $this->belongsTo(DetalleParametro::class, 'codigo_tipoprograma', 'codigo');
+        return $this->belongsTo(DetalleParametro::class, 'codigo_tipo_programa', 'codigo');
     }
 
     /**
@@ -88,7 +88,7 @@ class Programa extends Model
      */
     public function categoriaPrograma(): BelongsTo
     {
-        return $this->belongsTo(DetalleParametro::class, 'codigo_categoriaprograma', 'codigo');
+        return $this->belongsTo(DetalleParametro::class, 'codigo_categoria_programa', 'codigo');
     }
 
     /**

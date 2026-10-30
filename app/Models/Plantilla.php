@@ -13,7 +13,7 @@ class Plantilla extends Model
 
     protected $fillable = [
         'id_institucion',
-        'codigo_tipoprograma',
+        'codigo_tipo_programa',
         'nombre',
         'descripcion',
         'path_imagen_fondo',
@@ -56,6 +56,6 @@ class Plantilla extends Model
 
     public function tipoPrograma(): BelongsTo
     {
-        return $this->belongsTo(DetalleParametro::class, 'codigo_tipoprograma', 'codigo');
+        return $this->belongsTo(DetalleParametro::class, 'codigo_tipo_programa', 'codigo');
     }
 }

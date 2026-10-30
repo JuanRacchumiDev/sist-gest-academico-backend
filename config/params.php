@@ -22,7 +22,12 @@ return [
         'estado-matriicula' => 1010,
         'estado-pago' => 1011,
         'forma-pago' => 1012,
-        'sede' => 1013
+        'sede' => 1013,
+        'estado-periodo-academico' => 1014,
+        'estado-tipo-periodo-academico' => 1015,
+        'parentesco' => 1016,
+        'nacionalidad' => 1017,
+        'pais' => 1013
     ],
     'styles_pdfs' => [
         'certificacion' => [

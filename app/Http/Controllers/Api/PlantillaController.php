@@ -21,7 +21,7 @@ class PlantillaController extends Controller
     {
         $rawFilters = $request->only([
             'id_institucion',
-            'codigo_tipoprograma',
+            'codigo_tipo_programa',
             'search',
             'id_sucursal'
         ]);
@@ -64,7 +64,7 @@ class PlantillaController extends Controller
         try {
             $filters = $request->only([
                 'id_institucion',
-                'codigo_tipoprograma',
+                'codigo_tipo_programa',
                 'search',
                 'id_sucursal'
             ]);

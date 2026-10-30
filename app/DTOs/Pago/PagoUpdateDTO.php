@@ -8,14 +8,14 @@ class PagoUpdateDTO extends Data
 {
     public function __construct(
         public ?int $id_matricula = null,
-        public ?int $codigo_formapago = null,
+        public ?int $codigo_forma_pago = null,
         public ?int $id_sucursal = null,
 
         public ?string $concepto = null,
         public ?bool $estado = null,
 
         public ?int $id_modulo = null,
-        public ?int $codigo_estadopago = null,
+        public ?int $codigo_estado_pago = null,
 
         public ?int $numero_modulo = null,
         public ?string $numero_operacion = null,
@@ -49,7 +49,7 @@ class PagoUpdateDTO extends Data
                 'exists:academic.matricula,id',
                 'nullable'
             ],
-            'codigo_formapago' => [
+            'codigo_forma_pago' => [
                 'sometimes',
                 'integer',
                 'exists:academic.detalle_parametro,codigo',
@@ -67,7 +67,7 @@ class PagoUpdateDTO extends Data
                 'exists:academic.modulo,id',
                 'nullable',
             ],
-            'codigo_estadopago' => [
+            'codigo_estado_pago' => [
                 'sometimes',
                 'integer',
                 'exists:academic.detalle_parametro,codigo',

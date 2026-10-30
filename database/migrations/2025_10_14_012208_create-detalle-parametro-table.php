@@ -25,7 +25,6 @@ return new class extends Migration
             $table->boolean('en_empresa')->default(false);
             $table->boolean('compra')->default(false);
             $table->boolean('venta')->default(false);
-            $table->boolean('visible')->default(false);
 
             $table->string('fecha_crea', 10)->nullable();
             $table->string('fecha_actualiza', 10)->nullable();
@@ -36,6 +35,7 @@ return new class extends Migration
             $table->string('user_elimina', 12)->nullable();
 
             $table->boolean('estado')->default(true);
+            $table->boolean('visible')->default(true);
             $table->timestamps();
 
             $table->foreign('parametro_clase')

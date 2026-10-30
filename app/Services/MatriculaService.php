@@ -379,7 +379,7 @@ class MatriculaService implements IMatriculaService
 
             $dataCabecera = [
                 'id_persona' => $idPersona,
-                'codigo_estadomatricula' => $matriculaCreateDTO->codigo_estadomatricula,
+                'codigo_estado_matricula' => $matriculaCreateDTO->codigo_estado_matricula,
                 'id_sucursal' => $idInstitucion,
                 'numero_modulos' => $matriculaCreateDTO->numero_modulos,
                 'fecha_matricula' => $fechaMatricula,
@@ -409,7 +409,7 @@ class MatriculaService implements IMatriculaService
 
             $pagoMatriculaDTO = PagoCreateDTO::from([
                 'id_matricula'      => $matricula->id,
-                'codigo_formapago'      => $matriculaCreateDTO->codigo_formapago_matricula,
+                'codigo_forma_pago'      => $matriculaCreateDTO->codigo_forma_pago_matricula,
                 'id_sucursal'    => $idInstitucion,
                 'concepto'          => $matriculaCreateDTO->concepto_matricula ?? 'PAGO DE MATRÍCULA',
                 'numero_operacion'  => $matriculaCreateDTO->numero_operacion_matricula,
@@ -428,7 +428,7 @@ class MatriculaService implements IMatriculaService
             if ($matriculaCreateDTO->pagarPrimerModulo) {
                 $pagoModuloDTO = PagoCreateDTO::from([
                     'id_matricula'       => $matricula->id,
-                    'codigo_formapago'       => $matriculaCreateDTO->codigo_formapago_modulo,
+                    'codigo_forma_pago'       => $matriculaCreateDTO->codigo_forma_pago_modulo,
                     'id_sucursal'     => $idInstitucion,
                     'concepto'           => $matriculaCreateDTO->concepto_modulo ?? 'PAGO DE MÓDULO #1',
                     'numero_modulo'      => 1,

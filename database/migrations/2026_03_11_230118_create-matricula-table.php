@@ -15,10 +15,12 @@ return new class extends Migration
             $table->id();
 
             $table->unsignedBigInteger('id_persona');
-            $table->unsignedBigInteger('codigo_estadomatricula');
             $table->unsignedBigInteger('id_sucursal');
+            $table->unsignedBigInteger('id_grado_academico');
+            $table->unsignedBigInteger('id_seccion_academico');
+            $table->unsignedBigInteger('codigo_estado_matricula');
 
-            $table->integer('numero_modulos');
+            $table->integer('numero_modulos')->nullable();
 
             $table->string('fecha_matricula', 10);
             $table->string('fecha_retiro', 10)->nullable();
@@ -37,12 +39,22 @@ return new class extends Migration
                 ->on('academic.persona')
                 ->onDelete('cascade');
 
-            $table->foreign('codigo_estadomatricula')
+            $table->foreign('id_sucursal')
                 ->references('codigo')
                 ->on('academic.detalle_parametro')
                 ->onDelete('cascade');
 
-            $table->foreign('id_sucursal')
+            $table->foreign('id_grado_academico')
+                ->references('id')
+                ->on('academic.grado_academico')
+                ->onDelete('cascade');
+
+            $table->foreign('id_seccion_academico')
+                ->references('id')
+                ->on('academic.seccion_academico')
+                ->onDelete('cascade');
+
+            $table->foreign('codigo_estado_matricula')
                 ->references('codigo')
                 ->on('academic.detalle_parametro')
                 ->onDelete('cascade');
@@ -58,11 +70,17 @@ return new class extends Migration
             $table->dropForeign('id_persona');
             $table->dropColumn('id_persona');
 
-            $table->dropForeign('codigo_estadomatricula');
-            $table->dropColumn('codigo_estadomatricula');
-
             $table->dropForeign('id_sucursal');
             $table->dropColumn('id_sucursal');
+
+            $table->dropForeign('id_grado_academico');
+            $table->dropColumn('id_grado_academico');
+
+            $table->dropForeign('id_seccion_academico');
+            $table->dropColumn('id_seccion_academico');
+
+            $table->dropForeign('codigo_estado_matricula');
+            $table->dropColumn('codigo_estado_matricula');
         });
 
         Schema::dropIfExists('academic.matricula');

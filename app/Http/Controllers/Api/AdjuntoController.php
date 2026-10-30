@@ -56,7 +56,7 @@ class AdjuntoController extends Controller
     public function getFilteredPaginate(Request $request): JsonResponse
     {
         try {
-            $filters = $request->only(['codigo_tipoprograma', 'id_programa', 'id_modulo', 'search', 'fecha_inicio', 'fecha_final']);
+            $filters = $request->only(['codigo_tipo_programa', 'id_programa', 'id_modulo', 'search', 'fecha_inicio', 'fecha_final']);
 
             $perPage = (int)$request->input('limit', 10);
 

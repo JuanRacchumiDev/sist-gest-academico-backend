@@ -96,9 +96,9 @@ class AdjuntoRepository implements IAdjuntoRepository
             });
         }
 
-        if (!empty($filters['codigo_tipoprograma'])) {
+        if (!empty($filters['codigo_tipo_programa'])) {
             $query->whereHas('programa', function (Builder $q) use ($filters) {
-                $q->where('codigo_tipoprograma', $filters['codigo_tipoprograma']);
+                $q->where('codigo_tipo_programa', $filters['codigo_tipo_programa']);
             });
         }
 

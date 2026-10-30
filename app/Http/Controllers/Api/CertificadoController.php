@@ -279,7 +279,7 @@ class CertificadoController extends Controller
             'id_modulo'          => 'required|integer|exists:academic.modulo,id',
             'id_plantilla'       => 'required|integer|exists:academic.plantilla,id',
             'id_sucursal'     => 'required|integer|exists:academic.institucion,id',
-            'codigo_tipocertificado' => 'required|integer',
+            'codigo_tipo_certificado' => 'required|integer',
             'id_programa'        => 'required|integer|exists:academic.programa,id',
         ]);
 

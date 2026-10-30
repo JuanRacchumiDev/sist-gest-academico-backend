@@ -8,7 +8,7 @@ use Spatie\LaravelData\Data;
 class PersonaCreateDTO extends Data
 {
     public function __construct(
-        public int $codigo_tipodocumento,
+        public int $codigo_tipo_documento,
         public string $numero_documento,
         public string $nombres,
         public string $apellido_paterno,
@@ -49,7 +49,7 @@ class PersonaCreateDTO extends Data
     public static function rules(): array
     {
         return [
-            'codigo_tipodocumento' => [
+            'codigo_tipo_documento' => [
                 'required',
                 'integer',
                 'exists:academic.detalle_parametro,codigo'

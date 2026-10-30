@@ -27,6 +27,9 @@ return new class extends Migration
             $table->string('originalname', 180)->nullable();
             $table->string('filepath', 150)->nullable();
             $table->string('mimetype', 200)->nullable();
+            $table->string('disk', 50)->nullable();
+            $table->string('bucket', 100)->nullable();
+            $table->string('string', 50)->nullable();
             $table->unsignedBigInteger('size')->nullable();
 
             $table->boolean('is_descargable')->default(true);

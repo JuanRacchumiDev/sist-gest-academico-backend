@@ -15,9 +15,12 @@ return new class extends Migration
             $table->id();
 
             $table->unsignedBigInteger('id_programa');
+            $table->unsignedBigInteger('id_grado_academico')->nullable();
+            $table->unsignedBigInteger('id_seccion_academico')->nullable();
+            $table->unsignedBigInteger('id_docente')->nullable();
 
-            $table->integer('anio');
-            $table->tinyInteger('mes');
+            $table->integer('anio')->nullable();
+            $table->tinyInteger('mes')->nullable();
 
             $table->string('plataforma', 50)->nullable();
             $table->string('link_plataforma', 255)->nullable();
@@ -42,6 +45,21 @@ return new class extends Migration
                 ->references('id')
                 ->on('academic.programa')
                 ->onDelete('cascade');
+
+            $table->foreign('id_grado_academico')
+                ->references('id')
+                ->on('academic.grado_academico')
+                ->onDelete('cascade');
+
+            $table->foreign('id_seccion_academico')
+                ->references('id')
+                ->on('academic.seccion_academico')
+                ->onDelete('cascade');
+
+            $table->foreign('id_docente')
+                ->references('id')
+                ->on('academic.persona')
+                ->onDelete('cascade');
         });
     }
 
@@ -53,6 +71,15 @@ return new class extends Migration
         Schema::table('academic.programa_horarios', function (Blueprint $table) {
             $table->dropForeign('id_programa');
             $table->dropColumn('id_programa');
+
+            $table->dropForeign('id_grado_academico');
+            $table->dropColumn('id_grado_academico');
+
+            $table->dropForeign('id_seccion_academico');
+            $table->dropColumn('id_seccion_academico');
+
+            $table->dropForeign('id_docente');
+            $table->dropColumn('id_docente');
         });
 
         Schema::dropIfExists('academic.programa_horarios');

@@ -15,6 +15,8 @@ use App\Http\Controllers\Api\AdjuntoController;
 use App\Http\Controllers\Api\InstitucionController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\CuestionarioController;
+use App\Http\Controllers\Api\PeriodoAcademicoController;
+use App\Http\Controllers\Api\PeriodoEvaluacionController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
@@ -159,6 +161,22 @@ Route::prefix('v1')->group(function () {
             Route::get('/validate', [UserController::class, 'validate'])->name('users.validate');
             Route::post('/', [UserController::class, 'store'])->name('users.store');
             Route::patch('/{id}', [UserController::class, 'update'])->name('users.update');
+        });
+
+        Route::prefix('periodo-academico')->group(function () {
+            Route::get('/paginate', [PeriodoAcademicoController::class, 'getFilteredPaginate'])->name('periodos_academicos.paginate');
+            Route::get('/{id}', [PeriodoAcademicoController::class, 'show'])->name('periodos_academicos.show');
+            Route::get('/', [PeriodoAcademicoController::class, 'getFiltered'])->name('periodos_academicos');
+            Route::post('/', [PeriodoAcademicoController::class, 'store'])->name('periodos_academicos.store');
+            Route::patch('/{id}', [PeriodoAcademicoController::class, 'update'])->name('periodos_academicos.update');
+        });
+
+        Route::prefix('periodo-evaluacion')->group(function () {
+            Route::get('/paginate', [PeriodoEvaluacionController::class, 'getFilteredPaginate'])->name('periodos_academicos.paginate');
+            Route::get('/{id}', [PeriodoEvaluacionController::class, 'show'])->name('periodos_academicos.show');
+            Route::get('/', [PeriodoEvaluacionController::class, 'getFiltered'])->name('periodos_academicos');
+            Route::post('/', [PeriodoEvaluacionController::class, 'store'])->name('periodos_academicos.store');
+            Route::patch('/{id}', [PeriodoEvaluacionController::class, 'update'])->name('periodos_academicos.update');
         });
     });
 });

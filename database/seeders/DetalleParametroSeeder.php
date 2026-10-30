@@ -79,7 +79,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1001,
@@ -93,7 +94,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1001,
@@ -107,7 +109,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1001,
@@ -121,7 +124,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => false
             ],
             [
                 'parametro_clase' => 1001,
@@ -135,7 +139,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => false
             ],
             [
                 'parametro_clase' => 1001,
@@ -149,7 +154,83 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => false
+            ],
+            [
+                'parametro_clase' => 1001,
+                'nombre' => 'DIRECTOR',
+                'nombre_url' => 'director',
+                'descripcion' => 'DIRECTOR',
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
+            ],
+            [
+                'parametro_clase' => 1001,
+                'nombre' => 'SUBDIRECTOR',
+                'nombre_url' => 'subdirector',
+                'descripcion' => 'SUBDIRECTOR',
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
+            ],
+            [
+                'parametro_clase' => 1001,
+                'nombre' => 'DOCENTE',
+                'nombre_url' => 'docente',
+                'descripcion' => 'DOCENTE',
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
+            ],
+            [
+                'parametro_clase' => 1001,
+                'nombre' => 'ASISTENTE',
+                'nombre_url' => 'asistente',
+                'descripcion' => 'ASISTENTE',
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
+            ],
+            [
+                'parametro_clase' => 1001,
+                'nombre' => 'PARIENTE',
+                'nombre_url' => 'pariente',
+                'descripcion' => 'PARIENTE',
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
             ]
         ]);
 
@@ -167,7 +248,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1002,
@@ -182,7 +264,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1002,
@@ -197,7 +280,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1002,
@@ -212,7 +296,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1002,
@@ -227,7 +312,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1002,
@@ -242,7 +328,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ]
         ]);
 
@@ -258,7 +345,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1003,
@@ -271,7 +359,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1003,
@@ -284,7 +373,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1003,
@@ -297,7 +387,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1003,
@@ -310,7 +401,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ]
         ]);
 
@@ -326,7 +418,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ]
         ]);
 
@@ -342,7 +435,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ]
         ]);
 
@@ -358,7 +452,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ]
         ]);
 
@@ -375,7 +470,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ]
         ]);
 
@@ -392,7 +488,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1006,
@@ -406,7 +503,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1006,
@@ -420,7 +518,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1006,
@@ -434,7 +533,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1006,
@@ -448,7 +548,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1006,
@@ -462,7 +563,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1006,
@@ -476,7 +578,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1006,
@@ -490,7 +593,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ]
         ]);
 
@@ -508,7 +612,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1007,
@@ -523,7 +628,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1007,
@@ -538,7 +644,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1007,
@@ -553,7 +660,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ]
         ]);
 
@@ -571,7 +679,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1008,
@@ -586,15 +695,16 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ]
         ]);
 
         DB::table('academic.detalle_parametro')->insert([
             [
                 'parametro_clase' => 1010,
-                'nombre' => 'Activo',
-                'nombre_url' => 'activo',
+                'nombre' => 'Registrado',
+                'nombre_url' => 'registrado',
                 'abreviatura' => null,
                 'longitud' => null,
                 'en_persona' => false,
@@ -603,12 +713,13 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1010,
-                'nombre' => 'Suspendido',
-                'nombre_url' => 'suspendido',
+                'nombre' => 'Retirado',
+                'nombre_url' => 'retirado',
                 'abreviatura' => null,
                 'longitud' => null,
                 'en_persona' => false,
@@ -617,12 +728,13 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1010,
-                'nombre' => 'Completada',
-                'nombre_url' => 'completada',
+                'nombre' => 'Condicional',
+                'nombre_url' => 'condicional',
                 'abreviatura' => null,
                 'longitud' => null,
                 'en_persona' => false,
@@ -631,7 +743,23 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
+            ],
+            [
+                'parametro_clase' => 1010,
+                'nombre' => 'Finalizada',
+                'nombre_url' => 'finalizada',
+                'abreviatura' => null,
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
             ]
         ]);
 
@@ -648,7 +776,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1011,
@@ -662,7 +791,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1011,
@@ -676,7 +806,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1012,
@@ -690,7 +821,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1012,
@@ -704,7 +836,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1012,
@@ -718,7 +851,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1012,
@@ -732,7 +866,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1012,
@@ -746,7 +881,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ]
         ]);
 
@@ -763,7 +899,8 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
             ],
             [
                 'parametro_clase' => 1013,
@@ -777,7 +914,356 @@ class DetalleParametroSeeder extends Seeder
                 'venta' => false,
                 'fecha_crea' => $fechaCrea,
                 'created_at' => $now,
-                'updated_at' => $now
+                'updated_at' => $now,
+                'visible' => true
+            ]
+        ]);
+
+        DB::table('academic.detalle_parametro')->insert([
+            [
+                'parametro_clase' => 1014,
+                'nombre' => 'Activo',
+                'nombre_url' => 'activo',
+                'abreviatura' => null,
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
+            ],
+            [
+                'parametro_clase' => 1014,
+                'nombre' => 'Cerrado',
+                'nombre_url' => 'cerrado',
+                'abreviatura' => null,
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
+            ],
+            [
+                'parametro_clase' => 1014,
+                'nombre' => 'En curso',
+                'nombre_url' => 'en-curso',
+                'abreviatura' => null,
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
+            ]
+        ]);
+
+        DB::table('academic.detalle_parametro')->insert([
+            [
+                'parametro_clase' => 1015,
+                'nombre' => 'Bimestre',
+                'nombre_url' => 'bimestre',
+                'abreviatura' => null,
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
+            ],
+            [
+                'parametro_clase' => 1015,
+                'nombre' => 'Trimestre',
+                'nombre_url' => 'trimestre',
+                'abreviatura' => null,
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
+            ],
+            [
+                'parametro_clase' => 1015,
+                'nombre' => 'Semestre',
+                'nombre_url' => 'semestre',
+                'abreviatura' => null,
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
+            ]
+        ]);
+
+        DB::table('academic.detalle_parametro')->insert([
+            [
+                'parametro_clase' => 1016,
+                'nombre' => 'Padre',
+                'nombre_url' => 'padre',
+                'abreviatura' => null,
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
+            ],
+            [
+                'parametro_clase' => 1016,
+                'nombre' => 'Madre',
+                'nombre_url' => 'madre',
+                'abreviatura' => null,
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
+            ],
+            [
+                'parametro_clase' => 1016,
+                'nombre' => 'Abuelo',
+                'nombre_url' => 'abuelo',
+                'abreviatura' => null,
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
+            ],
+            [
+                'parametro_clase' => 1016,
+                'nombre' => 'Abuela',
+                'nombre_url' => 'abuela',
+                'abreviatura' => null,
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
+            ],
+            [
+                'parametro_clase' => 1016,
+                'nombre' => 'Hermano',
+                'nombre_url' => 'hermano',
+                'abreviatura' => null,
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
+            ],
+            [
+                'parametro_clase' => 1016,
+                'nombre' => 'Hermana',
+                'nombre_url' => 'hermama',
+                'abreviatura' => null,
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
+            ],
+            [
+                'parametro_clase' => 1016,
+                'nombre' => 'Apoderado',
+                'nombre_url' => 'apoderado',
+                'abreviatura' => null,
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
+            ]
+        ]);
+
+        DB::table('academic.detalle_parametro')->insert([
+            [
+                'parametro_clase' => 1017,
+                'nombre' => 'Peruana',
+                'nombre_url' => 'peruana',
+                'abreviatura' => null,
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
+            ],
+            [
+                'parametro_clase' => 1017,
+                'nombre' => 'Colombiana',
+                'nombre_url' => 'colombiana',
+                'abreviatura' => null,
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
+            ],
+            [
+                'parametro_clase' => 1017,
+                'nombre' => 'Venezolana',
+                'nombre_url' => 'venezolana',
+                'abreviatura' => null,
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
+            ]
+        ]);
+
+        DB::table('academic.detalle_parametro')->insert([
+            [
+                'parametro_clase' => 1018,
+                'nombre' => 'Perú',
+                'nombre_url' => 'peru',
+                'abreviatura' => null,
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
+            ],
+            [
+                'parametro_clase' => 1018,
+                'nombre' => 'Colombia',
+                'nombre_url' => 'colombia',
+                'abreviatura' => null,
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
+            ],
+            [
+                'parametro_clase' => 1018,
+                'nombre' => 'Venezuela',
+                'nombre_url' => 'venezuela',
+                'abreviatura' => null,
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
+            ]
+        ]);
+
+        DB::table('academic.detalle_parametro')->insert([
+            [
+                'parametro_clase' => 1019,
+                'nombre' => 'INICIAL',
+                'nombre_url' => 'inicial',
+                'abreviatura' => null,
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
+            ],
+            [
+                'parametro_clase' => 1019,
+                'nombre' => 'PRIMARIA',
+                'nombre_url' => 'primaria',
+                'abreviatura' => null,
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
+            ],
+            [
+                'parametro_clase' => 1019,
+                'nombre' => 'SECUNDARIA',
+                'nombre_url' => 'secundaria',
+                'abreviatura' => null,
+                'longitud' => null,
+                'en_persona' => false,
+                'en_empresa' => false,
+                'compra' => false,
+                'venta' => false,
+                'fecha_crea' => $fechaCrea,
+                'created_at' => $now,
+                'updated_at' => $now,
+                'visible' => true
             ]
         ]);
     }

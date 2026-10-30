@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\Repositories\Contracts\IDetalleParametroRepository;
-use App\Repositories\Contracts\IEventoRepository;
 use App\Repositories\Contracts\IParametroRepository;
 use App\Repositories\Contracts\IPersonaRepository;
 use App\Repositories\Contracts\IUserRepository;
@@ -17,9 +16,12 @@ use App\Repositories\Contracts\ICertificadoRepository;
 use App\Repositories\Contracts\IAdjuntoRepository;
 use App\Repositories\Contracts\ICuestionarioRepository;
 use App\Repositories\Contracts\IPreguntaRepository;
+use App\Repositories\Contracts\IPeriodoAcademicoRepository;
+use App\Repositories\Contracts\IPeriodoEvaluacionRepository;
+use App\Repositories\Contracts\IGradoAcademicoRepository;
+use App\Repositories\Contracts\ISeccionAcademicoRepository;
 
 use App\Repositories\Eloquent\DetalleParametroRepository;
-use App\Repositories\Eloquent\EventoRepository;
 use App\Repositories\Eloquent\ParametroRepository;
 use App\Repositories\Eloquent\PersonaRepository;
 use App\Repositories\Eloquent\UserRepository;
@@ -33,12 +35,15 @@ use App\Repositories\Eloquent\CertificadoRepository;
 use App\Repositories\Eloquent\AdjuntoRepository;
 use App\Repositories\Eloquent\CuestionarioRepository;
 use App\Repositories\Eloquent\PreguntaRepository;
+use App\Repositories\Eloquent\PeriodoAcademicoRepository;
+use App\Repositories\Eloquent\PeriodoEvaluacionRepository;
+use App\Repositories\Eloquent\GradoAcademicoRepository;
+use App\Repositories\Eloquent\SeccionAcademicoRepository;
 
 use App\Services\Contracts\IDetalleParametroService;
 use App\Services\Contracts\IParametroService;
 use App\Services\Contracts\IPersonaService;
 use App\Services\Contracts\IUserService;
-use App\Services\Contracts\IEventoService;
 use App\Services\Contracts\IPlantillaService;
 use App\Services\Contracts\IProgramaService;
 use App\Services\Contracts\IMatriculaService;
@@ -50,9 +55,12 @@ use App\Services\Contracts\IAdjuntoService;
 use App\Services\Contracts\ICuestionarioService;
 use App\Services\Contracts\IInstitucionService;
 use App\Services\Contracts\IStorageService;
+use App\Services\Contracts\IPeriodoAcademicoService;
+use App\Services\Contracts\IPeriodoEvaluacionService;
+use App\Services\Contracts\IGradoAcademicoService;
+use App\Services\Contracts\ISeccionAcademicoService;
 
 use App\Services\DetalleParametroService;
-use App\Services\EventoService;
 use App\Services\ParametroService;
 use App\Services\PersonaService;
 use App\Services\UserService;
@@ -67,6 +75,10 @@ use App\Services\AdjuntoService;
 use App\Services\CuestionarioService;
 use App\Services\InstitucionService;
 use App\Services\StorageService;
+use App\Services\PeriodoAcademicoService;
+use App\Services\PeriodoEvaluacionService;
+use App\Services\GradoAcademicoService;
+use App\Services\SeccionAcademicoService;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -99,12 +111,6 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             IUserRepository::class,
             UserRepository::class
-        );
-
-        // Enlazando el repositorio de evento
-        $this->app->bind(
-            IEventoRepository::class,
-            EventoRepository::class
         );
 
         // Enlazando el repositorio de plantilla
@@ -167,6 +173,30 @@ class RepositoryServiceProvider extends ServiceProvider
             CuestionarioRepository::class
         );
 
+        // Enlazando el repositorio de periodo académico
+        $this->app->bind(
+            IPeriodoAcademicoRepository::class,
+            PeriodoAcademicoRepository::class
+        );
+
+        // Enlazando el repositorio de periodo evaluación
+        $this->app->bind(
+            IPeriodoEvaluacionRepository::class,
+            PeriodoEvaluacionRepository::class
+        );
+
+        // Enlazando el repositorio de grado académico
+        $this->app->bind(
+            IGradoAcademicoRepository::class,
+            GradoAcademicoRepository::class
+        );
+
+        // Enlazando el repositorio de sección académica
+        $this->app->bind(
+            ISeccionAcademicoRepository::class,
+            SeccionAcademicoRepository::class
+        );
+
         /* --------- servicios ----------- */
         // Enlazando el servicio de parámetro
         $this->app->bind(
@@ -190,12 +220,6 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             IUserService::class,
             UserService::class
-        );
-
-        // Enlazando el servicio de evento
-        $this->app->bind(
-            IEventoService::class,
-            EventoService::class
         );
 
         // Enlazando el servicio de plantilla
@@ -262,6 +286,30 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             IStorageService::class,
             StorageService::class
+        );
+
+        // Enlazando el servicio de periodo académico
+        $this->app->bind(
+            IPeriodoAcademicoService::class,
+            PeriodoAcademicoService::class
+        );
+
+        // Enlazando el servicio de periodo evaluación
+        $this->app->bind(
+            IPeriodoEvaluacionService::class,
+            PeriodoEvaluacionService::class
+        );
+
+        // Enlazando el servicio de grado académico
+        $this->app->bind(
+            IGradoAcademicoService::class,
+            GradoAcademicoService::class
+        );
+
+        // Enlazando el servicio de sección académica
+        $this->app->bind(
+            ISeccionAcademicoService::class,
+            SeccionAcademicoService::class
         );
     }
 

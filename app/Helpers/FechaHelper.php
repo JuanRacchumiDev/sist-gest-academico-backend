@@ -15,4 +15,14 @@ class FechaHelper
     {
         return Carbon::now()->format("Y-m-d");
     }
+
+    /**
+     * Obtiene el año actual
+     * 
+     * @return int
+     */
+    public static function obtenerAnioActual(): int
+    {
+        return (int) Carbon::now()->format('Y');
+    }
 }

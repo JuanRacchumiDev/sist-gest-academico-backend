@@ -68,8 +68,8 @@ class ProgramaController extends Controller
             $filters = $request->only([
                 'titulo',
                 'codigo_segmento',
-                'codigo_tipoprograma',
-                'codigo_categoriaprograma',
+                'codigo_tipo_programa',
+                'codigo_categoria_programa',
                 'modalidad'
             ]);
 
@@ -166,7 +166,7 @@ class ProgramaController extends Controller
 
             $filters = [
                 'codigo_segmento' => $data['codigo_segmento'],
-                'codigo_tipoprograma' => $data['codigo_tipoprograma'],
+                'codigo_tipo_programa' => $data['codigo_tipo_programa'],
                 'titulo' => $data['titulo']
             ];
 

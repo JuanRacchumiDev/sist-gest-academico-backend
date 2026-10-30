@@ -78,7 +78,7 @@ class DetalleParametro extends Model
      */
     public function programasPorTipo(): HasMany
     {
-        return $this->hasMany(Programa::class, 'codigo_tipoprograma', 'codigo');
+        return $this->hasMany(Programa::class, 'codigo_tipo_programa', 'codigo');
     }
 
     /**
@@ -87,7 +87,7 @@ class DetalleParametro extends Model
      */
     public function programasPorCategoria(): HasMany
     {
-        return $this->hasMany(Programa::class, 'codigo_categoriaprograma', 'codigo');
+        return $this->hasMany(Programa::class, 'codigo_categoria_programa', 'codigo');
     }
 
     /**
@@ -105,6 +105,6 @@ class DetalleParametro extends Model
      */
     public function plantillas(): HasMany
     {
-        return $this->hasMany(Plantilla::class, 'codigo_tipoprograma', 'codigo');
+        return $this->hasMany(Plantilla::class, 'codigo_tipo_programa', 'codigo');
     }
 }

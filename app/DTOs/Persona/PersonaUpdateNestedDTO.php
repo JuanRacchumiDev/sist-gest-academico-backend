@@ -9,7 +9,7 @@ class PersonaUpdateNestedDTO extends Data
 {
     public function __construct(
         public int $id,
-        public ?int $codigo_tipodocumento = null,
+        public ?int $codigo_tipo_documento = null,
         public ?string $numero_documento = null,
         public ?string $nombres = null,
         public ?string $apellido_paterno = null,
@@ -51,7 +51,7 @@ class PersonaUpdateNestedDTO extends Data
         $personaId = request()->route('persona');
 
         return [
-            'codigo_tipodocumento' => [
+            'codigo_tipo_documento' => [
                 'sometimes',
                 'integer',
                 'exists:academic.detalle_parametro,codigo',

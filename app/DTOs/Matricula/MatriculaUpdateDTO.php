@@ -8,7 +8,7 @@ class MatriculaUpdateDTO extends Data
 {
     public function __construct(
         public ?int $id_persona = null,
-        public ?int $codigo_estadomatricula = null,
+        public ?int $codigo_estado_matricula = null,
         public ?int $id_sucursal = null,
         public ?int $numero_modulos = null,
         public ?array $programas = null,
@@ -17,7 +17,7 @@ class MatriculaUpdateDTO extends Data
 
         // --- Datos específicos del Pago de Matrícula (OBLIGATORIO) ---
         public ?float $monto_matricula = null,
-        public ?int $codigo_formapago_matricula = null,
+        public ?int $codigo_forma_pago_matricula = null,
         public ?string $concepto_matricula = null,
         public ?string $numero_operacion_matricula = null,
         public ?float $monto_efectivo_matricula = null,
@@ -26,7 +26,7 @@ class MatriculaUpdateDTO extends Data
         // --- Datos opcionales del Primer Pago de Módulo ---
         public ?bool $pagarPrimerModulo = false,
         public ?float $monto_modulo = null,
-        public ?int $codigo_formapago_modulo = null,
+        public ?int $codigo_forma_pago_modulo = null,
         public ?string $concepto_modulo = null,
         public ?string $numero_operacion_modulo = null,
         public ?float $monto_efectivo_modulo = null,
@@ -56,7 +56,7 @@ class MatriculaUpdateDTO extends Data
                 'exists:academic.persona,id',
                 'nullable'
             ],
-            'codigo_estadomatricula' => [
+            'codigo_estado_matricula' => [
                 'sometimes',
                 'integer',
                 'exists:academic.detalle_parametro,codigo',
@@ -99,7 +99,7 @@ class MatriculaUpdateDTO extends Data
                 'gt:0',
                 'nullable'
             ],
-            'codigo_formapago_matricula' => [
+            'codigo_forma_pago_matricula' => [
                 'sometimes',
                 'integer',
                 'exists:academic.detalle_parametro,codigo',
@@ -135,7 +135,7 @@ class MatriculaUpdateDTO extends Data
                 'numeric',
                 'min:0'
             ],
-            'codigo_formapago_modulo' => [
+            'codigo_forma_pago_modulo' => [
                 'required_if:pagarPrimerModulo,true',
                 'nullable',
                 'integer',

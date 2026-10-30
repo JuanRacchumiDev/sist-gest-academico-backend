@@ -16,7 +16,7 @@ class Persona extends Model
     protected $table = 'academic.persona';
 
     protected $fillable = [
-        'codigo_tipodocumento',
+        'codigo_tipo_documento',
         'numero_documento',
         'nombres',
         'apellido_paterno',
@@ -65,7 +65,7 @@ class Persona extends Model
      */
     public function tipoDocumento(): BelongsTo
     {
-        return $this->belongsTo(DetalleParametro::class, 'codigo_tipodocumento', 'codigo');
+        return $this->belongsTo(DetalleParametro::class, 'codigo_tipo_documento', 'codigo');
     }
 
     public function grupos(): BelongsToMany

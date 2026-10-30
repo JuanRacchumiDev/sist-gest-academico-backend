@@ -15,8 +15,8 @@ class ProgramaCreateDTO extends Data
         public bool $is_vigente,
         public bool $estado,
         public ?int $codigo_segmento = null,
-        public ?int $codigo_tipoprograma = null,
-        public ?int $codigo_categoriaprograma = null,
+        public ?int $codigo_tipo_programa = null,
+        public ?int $codigo_categoria_programa = null,
         public ?int $id_sucursal = null,
         public ?string $codigo_old = null,
         public ?string $sigla = null,
@@ -57,13 +57,13 @@ class ProgramaCreateDTO extends Data
                 'exists:academic.detalle_parametro,codigo',
                 'nullable'
             ],
-            'codigo_tipoprograma' => [
+            'codigo_tipo_programa' => [
                 'sometimes',
                 'integer',
                 'exists:academic.detalle_parametro,codigo',
                 'nullable'
             ],
-            'codigo_categoriaprograma' => [
+            'codigo_categoria_programa' => [
                 'sometimes',
                 'integer',
                 'exists:academic.detalle_parametro,codigo',

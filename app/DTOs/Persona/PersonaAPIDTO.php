@@ -9,7 +9,7 @@ class PersonaAPIDTO
     public readonly string $nombre_completo;
 
     public function __construct(
-        public readonly int $codigo_tipodocumento,
+        public readonly int $codigo_tipo_documento,
         public readonly string $numero_documento,
         public readonly string $nombres,
         public readonly string $apellido_paterno,
@@ -61,7 +61,7 @@ class PersonaAPIDTO
         $ubigeoString = is_array($response['ubigeo']) ? end($response['ubigeo']) : null;
 
         return new self(
-            codigo_tipodocumento: 1,
+            codigo_tipo_documento: 1,
             numero_documento: $response['numero'],
             nombres: $response['nombres'],
             apellido_paterno: $response['apellido_paterno'],
@@ -90,7 +90,7 @@ class PersonaAPIDTO
     {
         // Clonar la instancia actual, sobrescribiendo solo la propiedad nombre_grupo
         return new self(
-            codigo_tipodocumento: $this->codigo_tipodocumento,
+            codigo_tipo_documento: $this->codigo_tipo_documento,
             numero_documento: $this->numero_documento,
             nombres: $this->nombres,
             apellido_paterno: $this->apellido_paterno,
@@ -120,7 +120,7 @@ class PersonaAPIDTO
     public function withNombreCompleto(string $nuevoNombre): self
     {
         return new self(
-            codigo_tipodocumento: $this->codigo_tipodocumento,
+            codigo_tipo_documento: $this->codigo_tipo_documento,
             numero_documento: $this->numero_documento,
             nombres: $this->nombres,
             apellido_paterno: $this->apellido_paterno,

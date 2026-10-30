@@ -8,7 +8,7 @@ use Spatie\LaravelData\Data;
 class PersonaUpdateDTO extends Data
 {
     public function __construct(
-        public ?int $codigo_tipodocumento = null,
+        public ?int $codigo_tipo_documento = null,
         public ?string $numero_documento = null,
         public ?string $nombres = null,
         public ?string $apellido_paterno = null,
@@ -51,7 +51,7 @@ class PersonaUpdateDTO extends Data
         $id = request()->route('id') ?? request()->id;
 
         return [
-            'codigo_tipodocumento' => [
+            'codigo_tipo_documento' => [
                 'sometimes',
                 'integer',
                 'exists:academic.detalle_parametro,codigo',

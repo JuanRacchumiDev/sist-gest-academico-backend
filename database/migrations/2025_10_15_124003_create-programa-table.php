@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
 
             $table->unsignedBigInteger('codigo_segmento')->nullable();
-            $table->unsignedBigInteger('codigo_tipoprograma')->nullable();
-            $table->unsignedBigInteger('codigo_categoriaprograma')->nullable();
+            $table->unsignedBigInteger('codigo_tipo_programa')->nullable();
+            $table->unsignedBigInteger('codigo_categoria_programa')->nullable();
             $table->unsignedBigInteger('id_sucursal')->nullable();
 
             $table->string('codigo_old', 10)->nullable();
@@ -59,12 +59,12 @@ return new class extends Migration
                 ->on('academic.detalle_parametro')
                 ->onDelete('cascade');
 
-            $table->foreign('codigo_tipoprograma')
+            $table->foreign('codigo_tipo_programa')
                 ->references('codigo')
                 ->on('academic.detalle_parametro')
                 ->onDelete('cascade');
 
-            $table->foreign('codigo_categoriaprograma')
+            $table->foreign('codigo_categoria_programa')
                 ->references('codigo')
                 ->on('academic.detalle_parametro')
                 ->onDelete('cascade');
@@ -85,11 +85,11 @@ return new class extends Migration
             $table->dropForeign('codigo_segmento');
             $table->dropColumn('codigo_segmento');
 
-            $table->dropForeign('codigo_tipoprograma');
-            $table->dropColumn('codigo_tipoprograma');
+            $table->dropForeign('codigo_tipo_programa');
+            $table->dropColumn('codigo_tipo_programa');
 
-            $table->dropForeign('codigo_categoriaprograma');
-            $table->dropColumn('codigo_categoriaprograma');
+            $table->dropForeign('codigo_categoria_programa');
+            $table->dropColumn('codigo_categoria_programa');
 
             $table->dropForeign('id_sucursal');
             $table->dropColumn('id_sucursal');

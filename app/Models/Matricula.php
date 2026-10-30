@@ -14,7 +14,7 @@ class Matricula extends Model
 
     protected $fillable = [
         "id_persona",
-        "codigo_estadomatricula",
+        "codigo_estado_matricula",
         "id_sucursal",
         'numero_modulos',
 
@@ -48,7 +48,7 @@ class Matricula extends Model
 
     public function estadoMatricula(): BelongsTo
     {
-        return $this->belongsTo(DetalleParametro::class, 'codigo_estadomatricula', 'codigo');
+        return $this->belongsTo(DetalleParametro::class, 'codigo_estado_matricula', 'codigo');
     }
 
     public function institucion(): BelongsTo

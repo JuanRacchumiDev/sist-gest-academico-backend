@@ -31,7 +31,7 @@ class PersonaController extends Controller
     public function index(Request $request): JsonResponse
     {
         try {
-            $filters = $request->only(['search', 'codigo_tipodocumento', 'estado', 'grupo']);
+            $filters = $request->only(['search', 'codigo_tipo_documento', 'estado', 'grupo']);
             $perPage = (int)$request->input('per_page', 10);
 
             $personas = $this->personaService->getAllPersonasWithFilters($filters, $perPage);
@@ -85,7 +85,7 @@ class PersonaController extends Controller
     public function getFilteredPaginate(string $grupo, Request $request): JsonResponse
     {
         try {
-            $filters = $request->only(['search', 'codigo_tipodocumento', 'estado', 'numero_documento']);
+            $filters = $request->only(['search', 'codigo_tipo_documento', 'estado', 'numero_documento']);
             $filters['grupo'] = $grupo;
 
             $perPage = (int)$request->input('limit', 10);
@@ -124,7 +124,7 @@ class PersonaController extends Controller
             $data = $request->all();
 
             $filters = [
-                'codigo_tipodocumento' => $data['codigo_tipodocumento'],
+                'codigo_tipo_documento' => $data['codigo_tipo_documento'],
                 'numero_documento' => $data['numero_documento']
             ];
 

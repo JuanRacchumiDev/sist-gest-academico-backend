@@ -8,7 +8,7 @@ class MatriculaCreateDTO extends Data
 {
     public function __construct(
         public int $id_persona,
-        public int $codigo_estadomatricula,
+        public int $codigo_estado_matricula,
         public int $id_sucursal,
         public int $numero_modulos,
         public string $fecha_matricula,
@@ -17,7 +17,7 @@ class MatriculaCreateDTO extends Data
 
         // --- Datos específicos del Pago de Matrícula (OBLIGATORIO) ---
         public float $monto_matricula,
-        public int $codigo_formapago_matricula,
+        public int $codigo_forma_pago_matricula,
         public string $concepto_matricula,
         public ?string $numero_operacion_matricula = null,
         public ?float $monto_efectivo_matricula = null,
@@ -26,7 +26,7 @@ class MatriculaCreateDTO extends Data
         // --- Datos opcionales del Primer Pago de Módulo ---
         public ?bool $pagarPrimerModulo = false,
         public ?float $monto_modulo = null,
-        public ?int $codigo_formapago_modulo = null,
+        public ?int $codigo_forma_pago_modulo = null,
         public ?string $concepto_modulo = null,
         public ?string $numero_operacion_modulo = null,
         public ?float $monto_efectivo_modulo = null,
@@ -56,7 +56,7 @@ class MatriculaCreateDTO extends Data
                 'integer',
                 'exists:academic.persona,id'
             ],
-            'codigo_estadomatricula' => [
+            'codigo_estado_matricula' => [
                 'required',
                 'integer',
                 'exists:academic.detalle_parametro,codigo'
@@ -96,7 +96,7 @@ class MatriculaCreateDTO extends Data
                 'numeric',
                 'gt:0'
             ],
-            'codigo_formapago_matricula' => [
+            'codigo_forma_pago_matricula' => [
                 'required',
                 'integer',
                 'exists:academic.detalle_parametro,codigo'
@@ -130,7 +130,7 @@ class MatriculaCreateDTO extends Data
                 'numeric',
                 'min:0'
             ],
-            'codigo_formapago_modulo' => [
+            'codigo_forma_pago_modulo' => [
                 'required_if:pagarPrimerModulo,true',
                 'nullable',
                 'integer',

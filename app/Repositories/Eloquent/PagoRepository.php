@@ -41,8 +41,8 @@ class PagoRepository implements IPagoRepository
 
         $pagoData = DB::table('academic.pago as p')
             ->join('academic.matricula as m', 'm.id', '=', 'p.id_matricula')
-            ->join('academic.detalle_parametro as dp', 'dp.codigo', '=', 'p.codigo_formapago')
-            ->join('academic.detalle_parametro as dp3', 'dp3.codigo', '=', 'p.codigo_estadopago')
+            ->join('academic.detalle_parametro as dp', 'dp.codigo', '=', 'p.codigo_forma_pago')
+            ->join('academic.detalle_parametro as dp3', 'dp3.codigo', '=', 'p.codigo_estado_pago')
             ->select(
                 'm.fecha_matricula',
                 'dp.nombre as nombre_formapago',
@@ -93,8 +93,8 @@ class PagoRepository implements IPagoRepository
 
         $pagoData = DB::table('academic.pago as p')
             ->join('academic.programa as p2', 'p.id_programa', '=', 'p2.id')
-            ->join('academic.detalle_parametro as dp', 'dp.codigo', '=', 'p.codigo_formapago')
-            ->join('academic.detalle_parametro as dp3', 'dp3.codigo', '=', 'p.codigo_estadopago')
+            ->join('academic.detalle_parametro as dp', 'dp.codigo', '=', 'p.codigo_forma_pago')
+            ->join('academic.detalle_parametro as dp3', 'dp3.codigo', '=', 'p.codigo_estado_pago')
             ->select(
                 'p2.nombre as nombre_programa',
                 'dp.nombre as nombre_formapago',
@@ -139,13 +139,13 @@ class PagoRepository implements IPagoRepository
         $modulosData = DB::select(
             "
             SELECT
-                pg.id, pg.codigo_formapago, pg.numero_modulo,
+                pg.id, pg.codigo_forma_pago, pg.numero_modulo,
                 pg.concepto, pg.numero_operacion, pg.fecha_pago,
                 pg.cantidad_efectivo, pg.cantidad_operacion,
                 dp.nombre as nombre_formapago
             FROM
                 pago pg INNER JOIN academic.detalle_parametro dp
-                ON dp.codigo = pg.codigo_formapago
+                ON dp.codigo = pg.codigo_forma_pago
             WHERE pg.id_matricula = ? AND pg.numero_modulo IS NOT NULL
             ORDER BY pg.numero_modulo ASC
             ",

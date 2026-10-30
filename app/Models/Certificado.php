@@ -11,7 +11,7 @@ class Certificado extends Model
 
     protected $fillable = [
         'id_persona',
-        'codigo_tipocertificado',
+        'codigo_tipo_certificado',
         'id_sucursal',
         'id_plantilla',
         'id_programa',
@@ -64,7 +64,7 @@ class Certificado extends Model
      */
     public function tipoCertificado(): BelongsTo
     {
-        return $this->belongsTo(DetalleParametro::class, 'codigo_tipocertificado', 'codigo');
+        return $this->belongsTo(DetalleParametro::class, 'codigo_tipo_certificado', 'codigo');
     }
 
     /**

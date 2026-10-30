@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('academic.plantilla', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_institucion')->nullable();
-            $table->unsignedBigInteger('codigo_tipoprograma')->nullable();
+            $table->unsignedBigInteger('id_sucursal')->nullable();
+            $table->unsignedBigInteger('codigo_tipo_programa')->nullable();
 
             $table->string('nombre', 100);
             $table->string('descripcion', 150)->nullable();
@@ -41,7 +42,12 @@ return new class extends Migration
                 ->on('academic.institucion')
                 ->onDelete('cascade');
 
-            $table->foreign('codigo_tipoprograma')
+            $table->foreign('id_sucursal')
+                ->references('id')
+                ->on('academic.institucion')
+                ->onDelete('cascade');
+
+            $table->foreign('codigo_tipo_programa')
                 ->references('codigo')
                 ->on('academic.detalle_parametro')
                 ->onDelete('cascade');
@@ -57,8 +63,11 @@ return new class extends Migration
             $table->dropForeign('id_institucion');
             $table->dropColumn('id_institucion');
 
-            $table->dropForeign('codigo_tipoprograma');
-            $table->dropColumn('codigo_tipoprograma');
+            $table->dropForeign('id_sucursal');
+            $table->dropColumn('id_sucursal');
+
+            $table->dropForeign('codigo_tipo_programa');
+            $table->dropColumn('codigo_tipo_programa');
         });
 
         Schema::dropIfExists('academic.plantilla');

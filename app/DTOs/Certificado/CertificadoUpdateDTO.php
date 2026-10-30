@@ -9,7 +9,7 @@ class CertificadoUpdateDTO extends Data
 {
     public function __construct(
         public ?int $id_persona = null,
-        public ?int $codigo_tipocertificado = null,
+        public ?int $codigo_tipo_certificado = null,
         public ?int $id_sucursal = null,
         public ?bool $estado = null,
         public ?int $id_plantilla = null,
@@ -50,7 +50,7 @@ class CertificadoUpdateDTO extends Data
                 'exists:academic.persona,id',
                 'nullable'
             ],
-            'codigo_tipocertificado' => [
+            'codigo_tipo_certificado' => [
                 'sometimes',
                 'integer',
                 'exists:academic.detalle_parametro,codigo',

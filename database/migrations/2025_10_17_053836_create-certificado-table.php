@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->unsignedBigInteger('id_persona');
-            $table->unsignedBigInteger('codigo_tipocertificado');
+            $table->unsignedBigInteger('codigo_tipo_certificado');
             $table->unsignedBigInteger('id_sucursal')->nullable();
             $table->unsignedBigInteger('id_plantilla')->nullable();
             $table->unsignedBigInteger('id_programa')->nullable();
@@ -26,6 +26,10 @@ return new class extends Migration
             $table->string('path_file', 350)->nullable();
             $table->string('filename', 150)->nullable();
             $table->string('nombre_impresion', 150)->nullable();
+
+            $table->string('disk', 50)->nullable();
+            $table->string('bucket', 100)->nullable();
+            $table->string('region', 50)->nullable();
 
             $table->string('fecha_crea', 10)->nullable();
             $table->string('fecha_actualiza', 10)->nullable();
@@ -43,7 +47,7 @@ return new class extends Migration
                 ->on('academic.persona')
                 ->onDelete('cascade');
 
-            $table->foreign('codigo_tipocertificado')
+            $table->foreign('codigo_tipo_certificado')
                 ->references('codigo')
                 ->on('academic.detalle_parametro')
                 ->onDelete('cascade');
@@ -79,8 +83,8 @@ return new class extends Migration
             $table->dropForeign('id_persona');
             $table->dropColumn('id_persona');
 
-            $table->dropForeign('codigo_tipocertificado');
-            $table->dropColumn('codigo_tipocertificado');
+            $table->dropForeign('codigo_tipo_certificado');
+            $table->dropColumn('codigo_tipo_certificado');
 
             $table->dropForeign('id_sucursal');
             $table->dropColumn('id_sucursal');

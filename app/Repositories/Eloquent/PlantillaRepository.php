@@ -48,7 +48,7 @@ class PlantillaRepository implements IPlantillaRepository
     {
         $query = Plantilla::where('id_institucion', $idInstitucion)
             ->where('id_sucursal', $idSucursal)
-            ->where('codigo_tipoprograma', $codigoTipoPrograma)
+            ->where('codigo_tipo_programa', $codigoTipoPrograma)
             ->where('tipoDisenio', $tipoDisenio)
             ->where('disenio_default', $disenioDefault);
 
@@ -62,8 +62,8 @@ class PlantillaRepository implements IPlantillaRepository
             $query->where('id_institucion', $filters['id_institucion']);
         }
 
-        if (!empty($filters['codigo_tipoprograma'])) {
-            $query->where('codigo_tipoprograma', $filters['codigo_tipoprograma']);
+        if (!empty($filters['codigo_tipo_programa'])) {
+            $query->where('codigo_tipo_programa', $filters['codigo_tipo_programa']);
         }
 
         if (!empty($filters['id_sucursal'])) {

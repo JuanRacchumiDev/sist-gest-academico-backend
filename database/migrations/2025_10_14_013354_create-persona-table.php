@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('academic.persona', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('codigo_tipodocumento');
+            $table->unsignedBigInteger('codigo_tipo_documento');
+            $table->unsignedBigInteger('codigo_tipo_parentesco')->nullable();
+            $table->unsignedBigInteger('codigo_pais')->nullable();
+            $table->unsignedBigInteger('id_parentesco')->nullable();
 
             $table->string('numero_documento', 13);
             $table->string('nombres', 30);
@@ -44,12 +47,28 @@ return new class extends Migration
             $table->string('user_actualiza', 12)->nullable();
             $table->string('user_elimina', 12)->nullable();
 
+            $table->boolean('allow_notificacion')->default(false);
             $table->boolean('estado')->default(true);
             $table->timestamps();
 
-            $table->foreign('codigo_tipodocumento')
+            $table->foreign('codigo_tipo_documento')
                 ->references('codigo')
                 ->on('academic.detalle_parametro')
+                ->onDelete('cascade');
+
+            $table->foreign('codigo_tipo_parentesco')
+                ->references('codigo')
+                ->on('academic.detalle_parametro')
+                ->onDelete('cascade');
+
+            $table->foreign('codigo_pais')
+                ->references('codigo')
+                ->on('academic.detalle_parametro')
+                ->onDelete('cascade');
+
+            $table->foreign('id_parentesco')
+                ->references('id')
+                ->on('academic.persona')
                 ->onDelete('cascade');
         });
     }
@@ -60,8 +79,17 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('academic.persona', function (Blueprint $table) {
-            $table->dropForeign('codigo_tipodocumento');
-            $table->dropColumn('codigo_tipodocumento');
+            $table->dropForeign('codigo_tipo_documento');
+            $table->dropColumn('codigo_tipo_documento');
+
+            $table->dropForeign('codigo_tipo_parentesco');
+            $table->dropColumn('codigo_tipo_parentesco');
+
+            $table->dropForeign('codigo_pais');
+            $table->dropColumn('codigo_pais');
+
+            $table->dropForeign('id_parentesco');
+            $table->dropColumn('id_parentesco');
         });
 
         Schema::dropIfExists('academic.persona');

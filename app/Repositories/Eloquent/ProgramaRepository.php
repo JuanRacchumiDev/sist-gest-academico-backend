@@ -112,12 +112,12 @@ class ProgramaRepository implements IProgramaRepository
             $query->where('codigo_segmento', $filters['codigo_segmento']);
         }
 
-        if (!empty($filters['codigo_tipoprograma'])) {
-            $query->where('codigo_tipoprograma', $filters['codigo_tipoprograma']);
+        if (!empty($filters['codigo_tipo_programa'])) {
+            $query->where('codigo_tipo_programa', $filters['codigo_tipo_programa']);
         }
 
-        if (!empty($filters['codigo_categoriaprograma'])) {
-            $query->where('codigo_categoriaprograma', $filters['codigo_categoriaprograma']);
+        if (!empty($filters['codigo_categoria_programa'])) {
+            $query->where('codigo_categoria_programa', $filters['codigo_categoria_programa']);
         }
 
         if (!empty($filters['id_sucursal'])) {
