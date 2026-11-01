@@ -44,6 +44,11 @@ class PeriodoEvaluacionService implements IPeriodoEvaluacionService
         return $this->periodoRepository->findById($id);
     }
 
+    public function getPeriodoByUniqueCriteria(?int $idPeriodoAcademico, ?string $codigoTipoPeriodo, string $nombre): ?PeriodoEvaluacion
+    {
+        return $this->periodoRepository->findByUniqueCriteria($idPeriodoAcademico, $codigoTipoPeriodo, $nombre);
+    }
+
     public function createPeriodo(PeriodoEvaluacionCreateDTO $periodoCreateDTO): PeriodoEvaluacion
     {
         Log::info('Iniciando creación de periodo evaluación', [

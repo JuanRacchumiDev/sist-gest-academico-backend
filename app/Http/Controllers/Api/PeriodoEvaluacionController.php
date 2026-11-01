@@ -132,13 +132,11 @@ class PeriodoEvaluacionController extends Controller
         try {
             $data = $request->all();
 
-            $filters = [
-                'id_periodo_academico' => $data['id_periodo_academico'] ?? null,
-                'codigo_tipo_periodo_academico' => $data['codigo_tipo_periodo_academico'] ?? null,
-                'nombre' => $data['nombre'] ?? ""
-            ];
+            $idPeriodoAcademico = $data['id_periodo_academico'] ?? null;
+            $codigoTipoPeriodo = $data['codigo_tipo_periodo_academico'] ?? null;
+            $nombre = $data['nombre'] ?? "";
 
-            $periodoExistente = $this->periodoService->getAllPeriodos($filters)->first();
+            $periodoExistente = $this->periodoService->getPeriodoByUniqueCriteria($idPeriodoAcademico, $codigoTipoPeriodo, $nombre);
 
             if ($periodoExistente) {
                 return response()->json([

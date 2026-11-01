@@ -14,6 +14,8 @@ interface IPeriodoEvaluacionRepository
 
     public function findById(int $id): ?PeriodoEvaluacion;
 
+    public function findByUniqueCriteria(?int $idPeriodoAcademico, ?string $codigoTipoPeriodo, string $nombre): ?PeriodoEvaluacion;
+
     public function create(array $data): PeriodoEvaluacion;
 
     public function update(int $id, array $data): ?PeriodoEvaluacion;

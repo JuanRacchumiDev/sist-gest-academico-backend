@@ -40,7 +40,7 @@ class PeriodoEvaluacion extends Model
 
     public function periodoAcademico(): BelongsTo
     {
-        return $this->belongsTo(PeriodoAcademico::class, 'id_periodo_academico', 'codigo');
+        return $this->belongsTo(PeriodoAcademico::class, 'id_periodo_academico', 'id');
     }
 
     public function tipoPeriodoAcademico(): BelongsTo

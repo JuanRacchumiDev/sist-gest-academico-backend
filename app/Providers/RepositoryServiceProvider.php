@@ -20,6 +20,7 @@ use App\Repositories\Contracts\IPeriodoAcademicoRepository;
 use App\Repositories\Contracts\IPeriodoEvaluacionRepository;
 use App\Repositories\Contracts\IGradoAcademicoRepository;
 use App\Repositories\Contracts\ISeccionAcademicoRepository;
+use App\Repositories\Contracts\IGradoRepository;
 
 use App\Repositories\Eloquent\DetalleParametroRepository;
 use App\Repositories\Eloquent\ParametroRepository;
@@ -39,6 +40,7 @@ use App\Repositories\Eloquent\PeriodoAcademicoRepository;
 use App\Repositories\Eloquent\PeriodoEvaluacionRepository;
 use App\Repositories\Eloquent\GradoAcademicoRepository;
 use App\Repositories\Eloquent\SeccionAcademicoRepository;
+use App\Repositories\Eloquent\GradoRepository;
 
 use App\Services\Contracts\IDetalleParametroService;
 use App\Services\Contracts\IParametroService;
@@ -59,6 +61,7 @@ use App\Services\Contracts\IPeriodoAcademicoService;
 use App\Services\Contracts\IPeriodoEvaluacionService;
 use App\Services\Contracts\IGradoAcademicoService;
 use App\Services\Contracts\ISeccionAcademicoService;
+use App\Services\Contracts\IGradoService;
 
 use App\Services\DetalleParametroService;
 use App\Services\ParametroService;
@@ -79,6 +82,7 @@ use App\Services\PeriodoAcademicoService;
 use App\Services\PeriodoEvaluacionService;
 use App\Services\GradoAcademicoService;
 use App\Services\SeccionAcademicoService;
+use App\Services\GradoService;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -187,8 +191,8 @@ class RepositoryServiceProvider extends ServiceProvider
 
         // Enlazando el repositorio de grado académico
         $this->app->bind(
-            IGradoAcademicoRepository::class,
-            GradoAcademicoRepository::class
+            IGradoRepository::class,
+            GradoRepository::class
         );
 
         // Enlazando el repositorio de sección académica
@@ -302,8 +306,8 @@ class RepositoryServiceProvider extends ServiceProvider
 
         // Enlazando el servicio de grado académico
         $this->app->bind(
-            IGradoAcademicoService::class,
-            GradoAcademicoService::class
+            IGradoService::class,
+            GradoService::class
         );
 
         // Enlazando el servicio de sección académica

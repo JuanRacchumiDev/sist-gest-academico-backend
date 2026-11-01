@@ -189,21 +189,6 @@ class DetalleParametroSeeder extends Seeder
             ],
             [
                 'parametro_clase' => 1001,
-                'nombre' => 'DOCENTE',
-                'nombre_url' => 'docente',
-                'descripcion' => 'DOCENTE',
-                'longitud' => null,
-                'en_persona' => false,
-                'en_empresa' => false,
-                'compra' => false,
-                'venta' => false,
-                'fecha_crea' => $fechaCrea,
-                'created_at' => $now,
-                'updated_at' => $now,
-                'visible' => true
-            ],
-            [
-                'parametro_clase' => 1001,
                 'nombre' => 'ASISTENTE',
                 'nombre_url' => 'asistente',
                 'descripcion' => 'ASISTENTE',

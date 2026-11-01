@@ -79,6 +79,17 @@ class PeriodoAcademicoRepository implements IPeriodoAcademicoRepository
             });
         }
 
+        // Filtrar por nombre exacto (útil para la validación de duplicados en el store)
+        if (!empty($filters['nombre'])) {
+            $nombreTerm = '%' . mb_strtolower($filters['nombre'], 'UTF-8') . '%';
+            $query->whereRaw('LOWER(nombre) LIKE ?', [$nombreTerm]);
+        }
+
+        // Filtrar por estado si existe
+        if (isset($filters['estado'])) {
+            $query->where('estado', $filters['estado']);
+        }
+
         return $query;
     }
 

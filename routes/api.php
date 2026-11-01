@@ -15,6 +15,7 @@ use App\Http\Controllers\Api\AdjuntoController;
 use App\Http\Controllers\Api\InstitucionController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\CuestionarioController;
+use App\Http\Controllers\Api\GradoController;
 use App\Http\Controllers\Api\PeriodoAcademicoController;
 use App\Http\Controllers\Api\PeriodoEvaluacionController;
 use Illuminate\Support\Facades\Route;
@@ -172,11 +173,19 @@ Route::prefix('v1')->group(function () {
         });
 
         Route::prefix('periodo-evaluacion')->group(function () {
-            Route::get('/paginate', [PeriodoEvaluacionController::class, 'getFilteredPaginate'])->name('periodos_academicos.paginate');
-            Route::get('/{id}', [PeriodoEvaluacionController::class, 'show'])->name('periodos_academicos.show');
-            Route::get('/', [PeriodoEvaluacionController::class, 'getFiltered'])->name('periodos_academicos');
-            Route::post('/', [PeriodoEvaluacionController::class, 'store'])->name('periodos_academicos.store');
-            Route::patch('/{id}', [PeriodoEvaluacionController::class, 'update'])->name('periodos_academicos.update');
+            Route::get('/paginate', [PeriodoEvaluacionController::class, 'getFilteredPaginate'])->name('periodos_evaluacion.paginate');
+            Route::get('/{id}', [PeriodoEvaluacionController::class, 'show'])->name('periodos_evaluacion.show');
+            Route::get('/', [PeriodoEvaluacionController::class, 'getFiltered'])->name('periodos_evaluacion');
+            Route::post('/', [PeriodoEvaluacionController::class, 'store'])->name('periodos_evaluacion.store');
+            Route::patch('/{id}', [PeriodoEvaluacionController::class, 'update'])->name('periodos_evaluacion.update');
+        });
+
+        Route::prefix('grado-academico')->group(function () {
+            Route::get('/paginate', [GradoController::class, 'getFilteredPaginate'])->name('grados_academicos.paginate');
+            Route::get('/{id}', [GradoController::class, 'show'])->name('grados_academicos.show');
+            Route::get('/', [GradoController::class, 'getFiltered'])->name('grados_academicos');
+            Route::post('/', [GradoController::class, 'store'])->name('grados_academicos.store');
+            Route::patch('/{id}', [GradoController::class, 'update'])->name('grados_academicos.update');
         });
     });
 });
